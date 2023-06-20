@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Frontend</title>
+</head>
+<body>
+    <h1>API Frontend</h1>
+    <form action="{{ url_for('populate_table')}}" method="POST">
+        <label for="table">Table name:</label>
+        <input type="text" name="table" id="table" placeholder="Enter table name">
+        <input type="submit" value="Populate Table">
+    </form>
+</body>
+</html>

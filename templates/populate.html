@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Populate Table</title>
+</head>
+<body>
+    <h1>Populate Table</h1>
+    <form action="{{ url_for('populate_form', table=table) }}" method="post">
+        <label for="table">Table name:</label>
+        <select name="table" id="table">
+            {% for table in tables %}
+                <option value="{{ table }}">{{ table }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <h3>Columns and Values:</h3>
+        <div id="columns">
+            {% for column in columns %}
+            <div>
+                <input type="text" name="column" value="{{ column }}" readonly>
+                <input type="text" name="value" placeholder="Value">
+            </div>
+            {% endfor %}
+        </div><br>
+        <button type="button" onclick="addColumn()">Add Column</button><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function addColumn() {
+            const columnDiv = document.createElement("div");
+            const columnInput = document.createElement("input");
+            const valueInput = document.createElement("input");
+
+            columnInput.type = "text";
+            columnInput.name = "column";
+            columnInput.value = "Column name";
+            columnInput.readOnly = true;
+
+            valueInput.type = "text";
+            valueInput.name = "value";
+            valueInput.placeholder = "Value";
+
+            columnDiv.appendChild(columnInput);
+            columnDiv.appendChild(valueInput);
+
+            document.getElementById("columns").appendChild(columnDiv);
+        }
+    </script>
+</body>
+</html>
